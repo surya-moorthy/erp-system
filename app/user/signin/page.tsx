@@ -35,8 +35,8 @@ export default function Signin() {
                     />
                     <button 
                     className="bg-neutral-50 hover:bg-purple-400 text-neutral-950 px-6 py-2 rounded-xl transition-colors duration-300"
-                    onClick={()=>{
-                        signin({email , password});
+                    onClick={async ()=>{
+                        await signin({email , password});
                     }}
                     >
                         Sign in

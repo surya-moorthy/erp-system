@@ -46,8 +46,9 @@ export default function Signup() {
                     />
                     <button 
                     className="bg-neutral-50 hover:bg-purple-400 text-neutral-950 px-6 py-2 rounded-xl transition-colors duration-300"
-                    onClick={()=>{
-                        register({email , name ,password});
+                    onClick={async ()=>{
+                        const message = await register({email , name ,password});
+                        console.log(message);
                     }}
                     >
                         Sign up

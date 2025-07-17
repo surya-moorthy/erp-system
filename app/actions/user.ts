@@ -41,6 +41,7 @@ const encrypt = async (payload: any) => {
     .setExpirationTime('10s') // expires in 10 seconds
     .sign(key);
 };
+
 export async function signin({ email, password }: SigninTypes) {
     try {
         const user = await client.user.findUnique({ where: { email } , select : {name : true,email : true,password :  true}});
@@ -49,11 +50,12 @@ export async function signin({ email, password }: SigninTypes) {
         const isPasswordValid = await bcrypt.compare(password, user.password);
         if (!isPasswordValid) return "Invalid credentials";
 
-        const expires = new Date(Date.now() + 10*1000);
-        const session = await encrypt({user : expires});
-
         const sessionData = { email: user.email, name: user.name };
+       
+        console.log(sessionData);
 
+        const expires = new Date(Date.now() + 10*1000);
+        const session = await encrypt({sessionData , expires});
 
         (await cookies()).set('session',session,{expires,httpOnly : true});
         // Here you'd typically return a token or session
