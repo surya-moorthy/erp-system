@@ -1,6 +1,8 @@
 
 export default function Board() {
   return (
-    <div>Projects</div>
+    <div className="h-[200vh]">
+       Board
+    </div>
   )
 }
