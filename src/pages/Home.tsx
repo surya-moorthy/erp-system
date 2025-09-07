@@ -1,24 +1,33 @@
-import { CirclePlus } from "lucide-react";
-import Button from "../components/shared/Button";
-import BoardList from "../components/board/BoardList";
+import {CirclePlus, Pencil, Trash} from "lucide-react"
+import { useState } from "react"
+import BoardCard from "../components/board/BoardCard";
+import BoardListing from "../components/board/BoardListing";
 
 export default function Home() {
-  return ( 
-    <div className="bg-stone-100 w-[100vw] h-[100vh] flex justify-center top-24 ">
-           <div className="w-[80%] px-5">
-                  <div className=" flex justify-between items-center  mt-3">
-                    <h3 className="text-neutral-950 text-4xl font-bold font-mono tracking-tighter">
-                        Workflow
-                    </h3>
 
-                    <div className="flex justify-center items-center gap-5">
-                          <CirclePlus size={40} className="font-medium text-stone-400 cursor-pointer" />
-                          <Button name="Edit" className="text-white font-semibold text-lg font-serif"/>
-                    </div>
+
+  return ( 
+      <div className="bg-stone-200 w-full h-full flex flex-col justify-center">
+            <div className="flex justify-between items-center px-10 py-2.5">
+                  <h3 className="text-3xl text-neutral-900 font-bold">
+                      Boards
+                  </h3>
+                 <div className="flex justify-center items-center gap-5">
+                      <div  title="add a board"  className="p-2 rounded-full bg-neutral-400 w-fit"> 
+                         <CirclePlus size={30} className="text-neutral-900 hover:text-gray-600 stroke-2 rounded-full"/>
+                      </div>
+                      <div title="trash" className="p-2 rounded-full bg-neutral-400 w-fit">
+                            <Trash size={30} className="text-neutral-900 hover:text-gray-600 stroke-2 rounded-full"/>
+                      </div>
+                      <div title="edit"  className="p-2 rounded-full bg-neutral-400 w-fit">
+                           <Pencil size={30} className="text-neutral-900 hover:text-gray-600 stroke-2"/>
+                      </div>
                  </div>
-                 <BoardList/>
-           </div>
-    </div>
+            </div>
+            <div className="mt-10">
+                    <BoardListing/>
+            </div>
+      </div>
   )
 }
 
